@@ -3,14 +3,16 @@ Imports
 """
 from PIL import Image, ImageFont, ImageDraw
 from helpers import constants
+from tools.quote_maker import WATERMARK_FILEPATH
 
 
 """
 Constants
 """
 ABSOLUTE_FILEPATH = constants.absolute_filepath()
-FONTS_FILEPATH = constants.fonts_filepath()
-WATERMARKS_FILEPATH = constants.watermarks_filepath()
+FONTS_FILEPATH = ABSOLUTE_FILEPATH + constants.fonts_filepath()
+WATERMARKS_FILEPATH = ABSOLUTE_FILEPATH + constants.watermarks_filepath()
+
 WATERMARK_FONT = constants.watermark_font()
 WATERMARK_SIZE = constants.watermark_size()
 
@@ -20,13 +22,12 @@ Make an image containing watermark
 Returns exact filepath of created watermark
 """
 def create_watermark(username, media_type="video"):
-
+    
     # full watermark text
     watermark_text = constants.watermark_text(username)
 
     # watermark font and size
-    font = ImageFont.truetype(
-        f"{FONTS_FILEPATH}/{WATERMARK_FONT}.ttf", WATERMARK_SIZE)
+    font = ImageFont.truetype(f"{FONTS_FILEPATH}{WATERMARK_FONT}", WATERMARK_SIZE)
     font_size_x, font_size_y = font.getsize(watermark_text)
 
     # different bg colour for images and videos

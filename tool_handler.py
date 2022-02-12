@@ -1,10 +1,10 @@
 """
 Imports
 """
-from tools import quote_maker
 from apis import twitter_api
 from helpers import watermark
 from helpers import constants
+from tools import quote_maker
 
 
 """
@@ -20,19 +20,21 @@ def generate_quote(url, username):
         print(e)
 
     # Get tweet text
-    try:
-        tweet_text, tweet_author, media_type = twitter_api.getTweetInfo(
-            tweet_id)
-    except Exception as e:
-        print(e)
-
+    # try:
+    #     tweet_text, tweet_author, media_type = twitter_api.getTweetInfo(
+    #         tweet_id)
+    # except Exception as e:
+    #     print(e)
+    tweet_text = "Its the fact cant nobody talk about nobody yet they still be fkn talking"
+    tweet_author = "nunidior"
+    
     # Create watermark
     try:
         watermark.create_watermark(username=username,
                                    media_type="image")
     except Exception as e:
         print(e)
-
+        
     # Convert string text to image
     # Get filepath and height
     try:

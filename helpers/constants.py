@@ -2,16 +2,42 @@
 Filepaths
 """
 def absolute_filepath():
-    return "/"
+    return ""
+
+
+def caption_filepath():
+    return f"{absolute_filepath()}resources/images/captions/"
+
+
+def emojis_filepath():
+    return f"{absolute_filepath()}resources/emojis/"
 
 
 def fonts_filepath():
-    return f"{absolute_filepath()}fonts"
+    return f"{absolute_filepath()}resources/fonts/"
+
+
+def quote_output_filepath():
+    return f"{absolute_filepath()}resources/images/outputs/quote_render.png"
+
+
+def quote_template_filepath():
+    return f"{absolute_filepath()}resources/images/templates/white_1080x1080.png"
 
 
 def watermarks_filepath():
     return f"{absolute_filepath()}resources/images/watermarks/"
 
+
+"""
+Fonts
+"""
+def tweet_font():
+    return "chirp-standard-light.ttf"
+
+
+def watermark_font():
+    return "luckiest-guy-regular.ttf"
 
 """
 Captions
@@ -30,10 +56,6 @@ def emoji_placeholder():
 """
 Watermarks
 """
-def watermark_font():
-    return "luckiestguy-regular"
-
-
 def watermark_text(username):
     return f"FOLLOW @{username}"
 

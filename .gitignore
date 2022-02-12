@@ -10,6 +10,9 @@ credentials/
 resources/emojis/
 !resources/emojis/.gitkeep
 
+resources/images/captions/
+!resources/images/captions/.gitkeep
+
 resources/images/outputs/
 !resources/images/outputs/.gitkeep
 
