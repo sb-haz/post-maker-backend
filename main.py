@@ -39,16 +39,13 @@ class QuoteMaker(Resource):
 
         tweet_url = args['tweet_url']
         watermark = args['watermark']
-        print("TWEWEW", watermark)
 
         # create quote image
         # get auto gen caption
-        # caption_text = tool_handler.generate_quote(url=args['twitter_url'],
-        #                                           username=args['watermark'])
+        caption_text = tool_handler.generate_quote(url=tweet_url, username=watermark)
 
         # return caption as response
-        return {'tweet': tweet_url,
-                'watermark': watermark}, 201
+        return {'caption': caption_text}, 201
 
 
 """

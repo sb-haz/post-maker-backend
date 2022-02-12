@@ -5,7 +5,7 @@ import tweepy
 import re
 import html
 
-import credentials.twitter_credentials
+from credentials import twitter_credentials as credentials
 
 
 """
