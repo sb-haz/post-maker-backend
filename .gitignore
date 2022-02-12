@@ -1,9 +1,11 @@
 # Post Maker
 tools/
+!tools/.gitkeep
 
-credentials/twitter_credentials.py
-credentials/email_credentials.py
-credentials/database_credentials.py
+credentials/
+!credentials/example_twitter_credentials.py
+!credentials/example_email_credentials.py
+!credentials/example_database_credentials.py
 
 resources/emojis/
 !resources/emojis/.gitkeep
