@@ -7,6 +7,3 @@ consumer_secret = "XXXX"
 
 access_token = ""
 access_token_secret = ""
-
-database_username = "XXXX"
-database_username = "XXXX"
