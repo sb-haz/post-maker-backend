@@ -11,7 +11,8 @@ quote_put_args.add_argument("tweet_url", type=str,
                             help="Tweet URL", required=True)
 quote_put_args.add_argument("watermark", type=str,
                             help="Watermark", required=True)
-quote_put_args.add_argument("email", type=str, help="Email", required=True)
+quote_put_args.add_argument("email", type=str,
+                            help="Email", required=True)
 
 videos = {}
 
@@ -21,8 +22,6 @@ class QuoteMaker(Resource):
         args = quote_put_args.parse_args()
         print(args)
         return {"status": "preparing"}, 201
-
-        # return {"data": args}
 
 
 api.add_resource(QuoteMaker, "/tool/quote")
