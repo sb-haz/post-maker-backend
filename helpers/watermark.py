@@ -8,7 +8,7 @@ from helpers import constants
 """
 Constants
 """
-ABSOLUTE_FILEPATH = constants.ABSOLUTE_FILEPATH()
+ABSOLUTE_FILEPATH = constants.absolute_filepath()
 FONTS_FILEPATH = constants.fonts_filepath()
 WATERMARKS_FILEPATH = constants.watermarks_filepath()
 WATERMARK_FONT = constants.watermark_font()

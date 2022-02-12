@@ -26,10 +26,6 @@ quote_put_args.add_argument("watermark",
                             type=str,
                             help="Watermark",
                             required=True)
-quote_put_args.add_argument("email",
-                            type=str,
-                            help="Email",
-                            required=True)
 
 
 """
@@ -41,13 +37,18 @@ class QuoteMaker(Resource):
         # get post request args
         args = quote_put_args.parse_args()
 
+        tweet_url = args['tweet_url']
+        watermark = args['watermark']
+        print("TWEWEW", watermark)
+
         # create quote image
         # get auto gen caption
-        caption_text = tool_handler.generate_quote(url=args['twitter_url'],
-                                                   username=args['watermark'])
+        # caption_text = tool_handler.generate_quote(url=args['twitter_url'],
+        #                                           username=args['watermark'])
 
         # return caption as response
-        return {"caption": caption_text}, 201
+        return {'tweet': tweet_url,
+                'watermark': watermark}, 201
 
 
 """

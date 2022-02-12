@@ -1,6 +1,6 @@
 # Post Maker
 tools/
-credentials/
+credentials/twitter_credentials.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
