@@ -1,34 +1,32 @@
 # Post Maker
-tools/
+tools/*
 !tools/.gitkeep
 
-credentials/
-!credentials/example_twitter_credentials.py
-!credentials/example_email_credentials.py
-!credentials/example_database_credentials.py
+credentials/*
+!credentials/example_*.py
 
-resources/emojis/
+resources/emojis/*
 !resources/emojis/.gitkeep
 
-resources/images/captions/
+resources/images/captions/*
 !resources/images/captions/.gitkeep
 
-resources/images/outputs/
+resources/images/outputs/*
 !resources/images/outputs/.gitkeep
 
-resources/images/watermarks/
+resources/images/watermarks/*
 !resources/images/watermarks/.gitkeep
 
-resources/videos/downloads/
+resources/videos/downloads/*
 !resources/videos/downloads/.gitkeep
 
-resources/videos/outputs/
+resources/videos/outputs/*
 !resources/videos/outputs/.gitkeep
 
-resources/videos/templates/1080x1080/
+resources/videos/templates/1080x1080/*
 !resources/videos/templates/1080x1080/.gitkeep
 
-resources/videos/templates/1920x1080/
+resources/videos/templates/1920x1080/*
 !resources/videos/templates/1920x1080/.gitkeep
 
 # Byte-compiled / optimized / DLL files
