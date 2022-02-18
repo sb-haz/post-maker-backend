@@ -29,6 +29,11 @@ resources/videos/templates/1080x1080/*
 resources/videos/templates/1920x1080/*
 !resources/videos/templates/1920x1080/.gitkeep
 
+request_api.py
+
+Pipfile
+Pipfile.lock
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

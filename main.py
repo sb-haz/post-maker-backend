@@ -5,7 +5,6 @@ from flask import Flask
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
 import threading
-import time
 
 import tool_handler
 
@@ -114,4 +113,4 @@ api.add_resource(ReelMaker, "/tool/reel")
 Run app
 """
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False, port=5000, host="0.0.0.0")
