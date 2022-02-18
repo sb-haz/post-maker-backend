@@ -17,17 +17,22 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 
 
 """
-Request parser
+Quote Request parser
+tweet_url, watermark
 """
 quote_put_args = reqparse.RequestParser()
-quote_put_args.add_argument("tweet_url",
-                            type=str,
-                            help="Tweet URL",
-                            required=True)
-quote_put_args.add_argument("watermark",
-                            type=str,
-                            help="Watermark",
-                            required=True)
+quote_put_args.add_argument("tweet_url", type=str, help="Tweet URL", required=True)
+quote_put_args.add_argument("watermark", type=str, help="Watermark", required=True)
+
+
+"""
+Video Request parser
+tweet_url, watermark, email
+"""
+video_put_args = reqparse.RequestParser()
+video_put_args.add_argument("tweet_url", type=str, help="Tweet URL", required=True)
+video_put_args.add_argument("watermark", type=str, help="Watermark", required=True)
+video_put_args.add_argument("email", type=str, help="Email", required=True)
 
 
 """
@@ -51,9 +56,32 @@ class QuoteMaker(Resource):
 
 
 """
+Quote POST request
+"""
+class VideoMaker(Resource):
+    def post(self):
+
+        # get post request args
+        args = video_put_args.parse_args()
+
+        tweet_url = args['tweet_url']
+        watermark = args['watermark']
+        email = args['email']
+
+        # create caption image
+        # create video
+        tool_handler.generate_video(
+            height=1080, url=tweet_url, username=watermark, user_email=email)
+
+        # return caption as response
+        return {"status_msg": "When your video is ready, it will be emailed to you."}, 201
+
+
+"""
 Add URL to resource
 """
 api.add_resource(QuoteMaker, "/tool/quote")
+api.add_resource(VideoMaker, "/tool/video")
 
 
 """
