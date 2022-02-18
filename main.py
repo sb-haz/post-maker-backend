@@ -4,6 +4,8 @@ Imports
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
+import threading
+import time
 
 import tool_handler
 
@@ -70,8 +72,8 @@ class VideoMaker(Resource):
 
         # create caption image
         # create video
-        tool_handler.generate_video(
-            height=1080, url=tweet_url, username=watermark, user_email=email)
+        newThread = threading.Thread(target=tool_handler.generate_video, args=(1080, tweet_url, watermark, email))
+        newThread.start()
 
         # return caption as response
         return {"status_msg": "When your video is ready, it will be emailed to you."}, 201
@@ -92,8 +94,9 @@ class ReelMaker(Resource):
 
         # create caption image
         # create video
-        tool_handler.generate_video(
-            height=1920, url=tweet_url, username=watermark, user_email=email)
+        newThread = threading.Thread(target=tool_handler.generate_video, args=(1920, tweet_url, watermark, email))
+        newThread.start()
+        # tool_handler.generate_video(height=1920, url=tweet_url, username=watermark, user_email=email)
 
         # return caption as response
         return {"status_msg": "When your video is ready, it will be emailed to you."}, 201
