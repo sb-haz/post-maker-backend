@@ -37,6 +37,14 @@ video_put_args.add_argument("email", type=str, help="Email", required=True)
 
 
 """
+Homepage
+"""
+class Home(Resource):
+    def get(self):
+        return "Post Maker API"
+
+
+"""
 Quote POST request
 """
 class QuoteMaker(Resource):
@@ -104,6 +112,7 @@ class ReelMaker(Resource):
 """
 Add URL to resource
 """
+api.add_resource(Home, "/")
 api.add_resource(QuoteMaker, "/tool/quote")
 api.add_resource(VideoMaker, "/tool/video")
 api.add_resource(ReelMaker, "/tool/reel")
@@ -113,4 +122,4 @@ api.add_resource(ReelMaker, "/tool/reel")
 Run app
 """
 if __name__ == "__main__":
-    app.run(debug=False, port=5000, host="0.0.0.0")
+    app.run()
