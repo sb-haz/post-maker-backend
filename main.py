@@ -52,11 +52,11 @@ class QuoteMaker(Resource):
         caption_text = tool_handler.generate_quote(url=tweet_url, username=watermark)
 
         # return caption as response
-        return {'caption': caption_text}, 201
+        return {'render_src': '/examples/quote_maker.png', 'caption': caption_text}, 201
 
 
 """
-Quote POST request
+Video POST request
 """
 class VideoMaker(Resource):
     def post(self):
@@ -78,10 +78,33 @@ class VideoMaker(Resource):
 
 
 """
+Reel POST request
+"""
+class ReelMaker(Resource):
+    def post(self):
+
+        # get post request args
+        args = video_put_args.parse_args()
+
+        tweet_url = args['tweet_url']
+        watermark = args['watermark']
+        email = args['email']
+
+        # create caption image
+        # create video
+        tool_handler.generate_video(
+            height=1920, url=tweet_url, username=watermark, user_email=email)
+
+        # return caption as response
+        return {"status_msg": "When your video is ready, it will be emailed to you."}, 201
+
+
+"""
 Add URL to resource
 """
 api.add_resource(QuoteMaker, "/tool/quote")
 api.add_resource(VideoMaker, "/tool/video")
+api.add_resource(ReelMaker, "/tool/reel")
 
 
 """
