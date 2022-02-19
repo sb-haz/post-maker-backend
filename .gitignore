@@ -1,35 +1,35 @@
 # Post Maker
-tools/*
-!tools/.gitkeep
+app/tools/*
+!app/tools/.gitkeep
 
-credentials/*
-!credentials/example_*.py
+app/credentials/*
+!app/credentials/example_*.py
 
-resources/emojis/*
-!resources/emojis/.gitkeep
+app/resources/emojis/*
+!app/resources/emojis/.gitkeep
 
-resources/images/captions/*
-!resources/images/captions/.gitkeep
+app/resources/images/captions/*
+!app/resources/images/captions/.gitkeep
 
-resources/images/outputs/*
-!resources/images/outputs/.gitkeep
+app/resources/images/outputs/*
+!app/resources/images/outputs/.gitkeep
 
-resources/images/watermarks/*
-!resources/images/watermarks/.gitkeep
+app/resources/images/watermarks/*
+!app/resources/images/watermarks/.gitkeep
 
-resources/videos/downloads/*
-!resources/videos/downloads/.gitkeep
+app/resources/videos/downloads/*
+!app/resources/videos/downloads/.gitkeep
 
-resources/videos/outputs/*
-!resources/videos/outputs/.gitkeep
+app/resources/videos/outputs/*
+!app/resources/videos/outputs/.gitkeep
 
-resources/videos/templates/1080x1080/*
-!resources/videos/templates/1080x1080/.gitkeep
+app/resources/videos/templates/1080x1080/*
+!app/resources/videos/templates/1080x1080/.gitkeep
 
-resources/videos/templates/1920x1080/*
-!resources/videos/templates/1920x1080/.gitkeep
+app/resources/videos/templates/1920x1080/*
+!app/resources/videos/templates/1920x1080/.gitkeep
 
-request_api.py
+app/request_api.py
 
 Pipfile
 Pipfile.lock
