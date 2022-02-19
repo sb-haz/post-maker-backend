@@ -7,4 +7,5 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-CMD [ "python", "./main.py" ]
+ENTRYPOINT [ "python" ]
+CMD [ "main.py" ]
