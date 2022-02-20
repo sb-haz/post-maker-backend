@@ -6,7 +6,7 @@ from email.message import EmailMessage
 from email.utils import formataddr
 import os
 
-import credentials
+from credentials import email_credentials as credentials
 
 
 '''

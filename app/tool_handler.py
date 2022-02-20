@@ -7,7 +7,7 @@ from tools import quote_maker
 from tools import video_maker
 from helpers import watermark
 from helpers import constants
-# from helpers import email
+from helpers import email
 from apis import twitter_api
 
 
@@ -26,12 +26,10 @@ def extract_id_from_url(url):
 """
 Email video
 """
-def email_user(user_email, username, tweet_id, tweet_author,
-               filepath):
+def email_user(user_email, username, tweet_id, tweet_author, filepath):
 
     # Email video to user
-    # email.send_email_with_attachment(
-    #     user_email, username, tweet_id, tweet_author, filepath)
+    email.send_email_with_attachment(user_email, username, tweet_id, tweet_author, filepath)
 
     return True
 
@@ -40,31 +38,39 @@ def email_user(user_email, username, tweet_id, tweet_author,
 Create quote image
 Returns generated caption text
 """
-def generate_quote(url, username):
+def generate_quote(url, username, source):
+    tweet_id = ""
+    tweet_text = "" 
+    tweet_author = ""
+    media_type = ""
 
-    # Extract tweet id from url
-    tweet_id = extract_id_from_url(url)
+    if source == 'twitter':
+        # Extract tweet id from url
+        tweet_id = extract_id_from_url(url)
 
-    # Get tweet text
-    # try:
-    #     tweet_text, tweet_author, media_type = twitter_api.getTweetInfo(
-    #         tweet_id)
-    # except Exception as e:
-    #     print(e)
-    tweet_text = "Its the fact cant nobody talk about nobody yet they still be fkn talking"
-    tweet_author = "nunidior"
-
+        # Get tweet text
+        try:
+            tweet_text, tweet_author, media_type = twitter_api.getTweetInfo(
+                tweet_id)
+        except Exception as e:
+            print(e)
+            
+    elif source == 'text':
+        tweet_id = 0
+        tweet_author = username
+        tweet_text = url
+        
     # Create watermark
     try:
-        watermark.create_watermark(username=username,
-                                   media_type="image")
+        watermark.create_watermark(username=username, media_type="image")
     except Exception as e:
         print(e)
 
     # Convert string text to image
-    # Get filepath and height
+    # Get saved filepath
+    quote_filepath = ""
     try:
-        quote_maker.generate_quote(
+        quote_filepath = quote_maker.generate_quote(
             text=tweet_text,
             tweet_id=tweet_id,
             username=username)
@@ -73,7 +79,7 @@ def generate_quote(url, username):
 
     # Return caption text containing tweet author
     caption_text = constants.default_caption(tweet_author)
-    return caption_text
+    return quote_filepath, caption_text
 
 
 """
@@ -85,14 +91,14 @@ def generate_video(height, url, username, user_email):
     tweet_id = extract_id_from_url(url)
 
     # Get Tweet info
-    # try:
-    #     tweet_text, tweet_author, media_type = twitter_api.getTweetInfo(
-    #         tweet_id)
-    # except Exception as e:
-    #     print(e)
-    media_type = "video"
-    tweet_text = "Its the fact cant nobody talk about nobody yet they still be fkn talking"
-    tweet_author = "nunidior"
+    try:
+        tweet_text, tweet_author, media_type = twitter_api.getTweetInfo(
+            tweet_id)
+    except Exception as e:
+        print(e)
+    # media_type = "video"
+    # tweet_text = "Its the fact cant nobody talk about nobody yet they still be fkn talking"
+    # tweet_author = "nunidior"
 
     # Create watermark
     watermark_filepath = ""
@@ -104,19 +110,19 @@ def generate_video(height, url, username, user_email):
 
     # Convert string text to image
     # Get filepath and height
-    caption_height = ""
     caption_filepath = ""
+    caption_height = ""
+    timestamp = ""
     try:
-        caption_height, caption_filepath = quote_maker.generate_quote(text=tweet_text,
-                                                                      tweet_id=tweet_id,
-                                                                      username=username)
+        caption_filepath, caption_height, timestamp = quote_maker.convert_text_to_image(text=tweet_text,
+                                                                                        tweet_id=tweet_id,
+                                                                                        username=username)
     except Exception as e:
         print(e)
 
     # Check media type of tweet
     if media_type == "video":
-        print("Media_Type is VIDEO")
-
+        
         # # Download twitter video
         try:
             video_maker.download_twitter_video(url, tweet_id)
@@ -124,6 +130,7 @@ def generate_video(height, url, username, user_email):
             print(e)
 
         # Add caption and watermark to video
+        filepath = ""
         try:
             filepath, video_duration = video_maker.generate_video(tweet_id=tweet_id,
                                                                   caption_height=caption_height,
@@ -136,8 +143,8 @@ def generate_video(height, url, username, user_email):
             print(e)
 
         # Email video to user
-        # if email_user(user_email, username, tweet_id, tweet_author,
-        #               filepath):
+        if email_user(user_email, username, tweet_id, tweet_author,
+                      filepath):
 
             # If email is successful delete videos
             '''
@@ -149,7 +156,7 @@ def generate_video(height, url, username, user_email):
             except Exception as e:
                 print(e)
             '''
-            # pass
+            pass
 
     # If tweet doesnt contain video
     elif media_type == "photo":

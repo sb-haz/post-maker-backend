@@ -15,6 +15,8 @@ Flask app
 app = Flask(__name__)
 api = Api(app)
 CORS(app, resources={r'/*': {'origins': '*'}})
+# Stop flask static caching
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 
 """
@@ -24,6 +26,7 @@ tweet_url, watermark
 quote_put_args = reqparse.RequestParser()
 quote_put_args.add_argument("tweet_url", type=str, help="Tweet URL", required=True)
 quote_put_args.add_argument("watermark", type=str, help="Watermark", required=True)
+quote_put_args.add_argument("source", type=str, help="Quote source", required=True)
 
 
 """
@@ -55,13 +58,14 @@ class QuoteMaker(Resource):
 
         tweet_url = args['tweet_url']
         watermark = args['watermark']
+        source = args['source']
 
         # create quote image
         # get auto gen caption
-        caption_text = tool_handler.generate_quote(url=tweet_url, username=watermark)
+        quote_filepath, caption_text = tool_handler.generate_quote(url=tweet_url, username=watermark, source=source)
 
         # return caption as response
-        return {'render_src': '/examples/quote_maker.png', 'caption': caption_text}, 201
+        return {'quote_filepath': quote_filepath, 'caption_text': caption_text}, 201
 
 
 """

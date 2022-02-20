@@ -10,8 +10,8 @@ from tools.quote_maker import WATERMARK_FILEPATH
 Constants
 """
 ABSOLUTE_FILEPATH = constants.absolute_filepath()
-FONTS_FILEPATH = ABSOLUTE_FILEPATH + constants.fonts_filepath()
-WATERMARKS_FILEPATH = ABSOLUTE_FILEPATH + constants.watermarks_filepath()
+FONTS_FILEPATH = constants.fonts_filepath()
+WATERMARKS_FILEPATH = constants.watermarks_filepath()
 
 WATERMARK_FONT = constants.watermark_font()
 WATERMARK_SIZE = constants.watermark_size()

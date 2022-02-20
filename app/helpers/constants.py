@@ -2,43 +2,61 @@
 Filepaths
 """
 def absolute_filepath():
-    return ""
+    return "C:/Users/Hasan/Desktop/Post Maker/backend-flask/app/"
+
+def resources_filepath():
+    return f"{absolute_filepath()}resources/"
+
+def static_filepath():
+    return f"{absolute_filepath()}static/"
 
 
-def caption_filepath():
-    return f"{absolute_filepath()}resources/images/captions/"
-
-
+"""
+Emoji Filepaths
+"""
 def emojis_filepath():
-    return f"{absolute_filepath()}resources/emojis/"
+    return f"{resources_filepath()}emojis/"
 
 
+"""
+Emoji Filepaths
+"""
 def fonts_filepath():
-    return f"{absolute_filepath()}resources/fonts/"
+    return f"{resources_filepath()}fonts/"
+
+
+"""
+Images Filepaths
+"""
+def caption_filepath():
+    return f"{resources_filepath()}images/captions/"
 
 
 def quote_output_filepath():
-    return f"{absolute_filepath()}resources/images/outputs/quote_render.png"
+    return f"{resources_filepath()}images/outputs/quote_render.png"
 
 
 def quote_template_filepath():
-    return f"{absolute_filepath()}resources/images/templates/white_1080x1080.png"
+    return f"{resources_filepath()}images/templates/white_1080x1080.png"
 
 
+def watermarks_filepath():
+    return f"{resources_filepath()}images/watermarks/"
+
+
+"""
+Videos Filepaths
+"""
 def video_downloads_filepath():
-    return f"{absolute_filepath()}resources/videos/downloads/"
+    return f"{resources_filepath()}videos/downloads/"
 
 
 def video_outputs_filepath():
-    return f"{absolute_filepath()}resources/videos/outputs/"
+    return f"{resources_filepath()}videos/outputs/"
 
 
 def video_templates_filepath():
-    return f"{absolute_filepath()}resources/videos/templates/"
-
-    
-def watermarks_filepath():
-    return f"{absolute_filepath()}resources/images/watermarks/"
+    return f"{resources_filepath()}videos/templates/"
 
 
 """
