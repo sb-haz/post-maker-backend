@@ -41,7 +41,7 @@ Homepage
 """
 class Home(Resource):
     def get(self):
-        return "Post Maker API"
+        return "Post Maker API v2"
 
 
 """
@@ -122,4 +122,4 @@ api.add_resource(ReelMaker, "/tool/reel")
 Run app
 """
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(port=5000, host="0.0.0.0")
