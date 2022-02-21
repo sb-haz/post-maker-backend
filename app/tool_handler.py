@@ -91,14 +91,14 @@ def generate_video(height, url, username, user_email):
     tweet_id = extract_id_from_url(url)
 
     # Get Tweet info
-    try:
-        tweet_text, tweet_author, media_type = twitter_api.getTweetInfo(
-            tweet_id)
-    except Exception as e:
-        print(e)
-    # media_type = "video"
-    # tweet_text = "Its the fact cant nobody talk about nobody yet they still be fkn talking"
-    # tweet_author = "nunidior"
+    # try:
+    #     tweet_text, tweet_author, media_type = twitter_api.getTweetInfo(
+    #         tweet_id)
+    # except Exception as e:
+    #     print(e)
+    media_type = "video"
+    tweet_text = "Its the fact cant nobody talk about nobody yet they still be fkn talking"
+    tweet_author = "nunidior"
 
     # Create watermark
     watermark_filepath = ""
